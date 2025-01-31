@@ -4,7 +4,6 @@ import path from "path";
 const envPath = path.join(__dirname, "../../.env");
 dotenv.config({ path: envPath });
 
-import getPool from "../src/database/poolConnection";
 import PoolConnection from "../src/database/Pool";
 import * as dbInterfaces from "../src/database/db";
 import logger from "../src/logger";
@@ -20,7 +19,7 @@ describe("Boards is initialised and works correctly", () => {
             logger.error("No .env data while attempt to run the tests");
             process.exit(1);
         }
-        pool = await getPool(dbname, DB_HOST, Number(DB_PORT), DB_USER, DB_PASSWORD);
+        pool = new PoolConnection(dbname, DB_HOST, Number(DB_PORT), DB_USER, DB_PASSWORD); //edit that
     });
 
     afterAll(async () => {

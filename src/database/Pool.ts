@@ -10,7 +10,7 @@ const [queryStrokes, queryBoards] = [
     String(readFileSync(path.join(__dirname, "../../queries/boardsInit.sql"))),
 ];
 
-class PoolConnection { //check if name is accurate DEV
+export default class PoolConnection { //check if name is accurate DEV
     protected pool: mariadb.Pool | null = null;
     protected connection: mariadb.Connection | null = null;
 
@@ -161,8 +161,6 @@ class PoolConnection { //check if name is accurate DEV
         }
     }
 }
-
-export default PoolConnection;
 
 //Think about being able to give user option to change the name of the tables or at least db name in .env file
 //Improve safety
